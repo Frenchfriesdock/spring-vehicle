@@ -1,0 +1,10 @@
+jwt:
+  user-secret-key: houkai
+  user-ttl: 7200000
+  user-token-name: token
+
+auth:
+  excludePaths:
+    - /car/list
+    - /carUser/login
+
