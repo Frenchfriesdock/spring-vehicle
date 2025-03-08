@@ -1,0 +1,30 @@
+jwt:
+  user-secret-key: houkai
+  user-ttl: 7200000
+  user-token-name: token
+
+auth:
+  excludePaths:
+    - /user/login
+    - /user/BEndUserDtoLogin
+    - /user/userId
+
+  include-paths:
+    - /user/list
+
+# application.yml
+spring:
+  main:
+    web-application-type: reactive
+
+  mail:
+    host: smtp.126.com
+    port: 587
+    username: hosiky@126.com
+    password: BFQZiSkWcfz25yWn
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true

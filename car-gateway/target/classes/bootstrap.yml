@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: gateway  # 服务名称
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      server-addr: 192.168.220.128:8848 #nacos的配置# nacos地址
+    gateway:
+      default-filters: # default-filters下的过滤器可以作用于所有路由
+        - AddRequestHeader=key, value
+      routes:
+        - id: user
+          uri: lb://user-service:8081 # 路由的目标服务， lb表示负载均衡
+          predicates:
+            - Path=/user/**  #这里是以请求路径作为判断规则
+#        - id: carUser
+#          uri: lb://carUser-service
+#          predicates:
+#            - Path=/carUser/**

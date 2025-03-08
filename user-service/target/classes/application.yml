@@ -1,0 +1,74 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: user-service
+
+  mail:
+    host: smtp.126.com
+    username: hosiky@126.com
+    password: BFQZiSkWcfz25yWn
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/vehicle
+    username: root
+    password: 1234
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      server-addr: 192.168.220.128 #nacos的配置
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password:
+      lettuce:
+        pool:
+          max-active: 8 # 连接池最大连接数
+          max-idle: 8 #连接池最大空闲连接
+          min-idle: 0 #连接池最小空闲连接
+
+feign:
+  okhttp:
+    enabled: true # 开启OKHttp功能
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+logging:
+  level:
+    com.hosiky.user:
+      mapper: debug
+      service: info
+      controller: info
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: 'default'
+      paths-to-match: '/**'
+      packages-to-scan: com.hosiky.user.controller
+
+jwt:
+  user-secret-key: houkai
+  user-ttl: 7200000
+  user-token-name: token
+
